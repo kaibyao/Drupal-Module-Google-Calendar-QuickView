@@ -1,0 +1,4 @@
+; $Id$
+name = GCal Quick View
+description = Shows a quick view sidebar of a Google Calendar.
+core = 6.x

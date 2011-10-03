@@ -1,0 +1,62 @@
+<?php
+// $Id$
+
+/**
+* Display help and module information
+* @param path which path of the site we're displaying help
+* @param arg array that holds the current path as would be returned from arg() function
+* @return help text for the path
+*/
+function gcalqv_help($path, $arg) {
+  $output = '';
+  switch ($path) {
+    case "admin/help#gcalqv":
+      $output = '<p>'.  t("Displays a Quick View sidebar of a Google calendar.") .'</p>';
+      break;
+  }
+  return $output;
+} // function gcalqv_help
+	
+/**
+* Valid permissions for this module
+* @return array An array of valid permissions for the onthisdate module
+*/
+function gcalqv_perm() {
+  return array('access gcalqv content');
+} // function gcalqv_perm()
+
+/**
+* Generate HTML for the block
+* @param op the operation from the URL
+* @param delta offset
+* @returns block HTML
+*/
+function gcalqv_block($op='list', $delta=0) {
+  // listing of blocks, such as on the admin/block page
+  if ($op == "list") {
+    $block[0]["info"] = t('GCal Quick View');
+    return $block;
+  } else if ($op == 'view') {
+  // set up the actual block's content
+	  
+  /* BTW, Sorry the code ended up like this. Unfortunately due to the way Drupal works and my own inability to figure out the little nuances about iCalendar feeds, I decided to just import a phpicalendar output into the block's content. As you can see, all of the actual settings are in the following files:
+	
+	/phpicalendar/
+		agenda.php
+		config.inc.php
+		
+		functions/
+			template.php
+		
+		templates/default/
+			agenda.tpl
+		*/
+  $block['subject'] = 'Upcoming Events';
+  $feed_path = drupal_get_path('module', 'gcalqv');
+  $getfeed = file_get_contents("http://" . $_SERVER['SERVER_NAME'] . base_path() . $feed_path . "/phpicalendar/agenda.php");
+  
+  $block['content'] = $getfeed;
+  return $block;
+  }
+} // end gcalqv_block
+	
