@@ -14,6 +14,6 @@
 
 </div><!--/#gcalendar-section-->
 <div style="padding-top: 25px;">
-	<a href="http://www.facebook.com/group.php?gid=72940578197" target="_blank" ><img src="/web/sites/default/files/images/find_us_on_facebook_badge.gif" alt="Find us on Facebook!" /></a>
+	<a href="fake_url" target="_blank" ><img src="/web/sites/default/files/images/find_us_on_facebook_badge.gif" alt="Find us on Facebook!" /></a>
 </div>
 <?php //var_dump($block->content); ?>

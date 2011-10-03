@@ -83,7 +83,7 @@ these arrays provide extra calendar options.
 
 */
 $list_webcals = array(
-	'http://www.google.com/calendar/ical/hcsug74bgpjt7dtd5a0d8nqir0@group.calendar.google.com/public/basic.ics'
+	'http://www.google.com/calendar/ical/fake_key@group.calendar.google.com/public/basic.ics'
 );
 $more_webcals['recur_tests'] = array();
 $locked_cals = array(
